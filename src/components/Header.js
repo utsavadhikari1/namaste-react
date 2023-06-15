@@ -1,3 +1,8 @@
+import { useState } from "react";
+
+const loggedInUser = () => {
+  return true;
+};
 const Title = () => (
   <a href="/">
     <img
@@ -9,9 +14,16 @@ const Title = () => (
 );
 
 const Header = () => {
+  const [isLoggedIn, setIsLoggedIn] = useState(true);
+  // const [title, setTitle] = useState("Food Villa");
+
   return (
     <div className="header">
       <Title />
+
+      {/* <h1>{title}</h1>
+      <button onClick={() => setTitle("New Food App")}>Change tittle</button> */}
+
       <div className="nav-items">
         <ul>
           <li>Home</li>
@@ -20,6 +32,11 @@ const Header = () => {
           <li>Cart</li>
         </ul>
       </div>
+      {isLoggedIn ? (
+        <button onClick={() => setIsLoggedIn(false)}>Logout</button>
+      ) : (
+        <button onClick={() => setIsLoggedIn(true)}>Login</button>
+      )}
     </div>
   );
 };
